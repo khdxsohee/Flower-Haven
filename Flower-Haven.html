@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Haven | Beautiful Blooms Delivered to Your Door</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f7f4;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        /* Color Scheme */
+        :root {
+            --primary: #8b7e74; /* Soft taupe */
+            --secondary: #c8b9a3; /* Light beige */
+            --accent: #d46c8d; /* Rose pink */
+            --accent-light: #f1d2e2; /* Pale pink */
+            --light: #f9f7f4; /* Off-white */
+            --dark: #3a3a3a; /* Dark gray */
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--light);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 5px 0;
+            background-color: rgba(249, 247, 244, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 108, 141, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #c05a7e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 108, 141, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(139, 126, 116, 0.7), rgba(139, 126, 116, 0.7)), 
+                        url('https://images.unsplash.com/photo-1558458854-ef102875482f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 5%;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title h3 {
+            font-size: 2.2rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-title h3::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 5%;
+            background-color: var(--light);
+        }
+
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .add-to-cart {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-to-cart:hover {
+            background-color: #c05a7e;
+            transform: scale(1.1);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 5%;
+            background-color: var(--light);
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: opacity 1s ease;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-rating {
+            color: #f8c64e;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--accent-light);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .slider-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* Call to Action */
+        .cta {
+            padding: 100px 5%;
+            background: linear-gradient(rgba(139, 126, 116, 0.9), rgba(139, 126, 116, 0.9)), 
+                        url('https://images.unsplash.com/photo-1560889094-026015690894?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 5% 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-light);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-col p, .footer-col li {
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            transition: color 0.3s ease;
+        }
+
+        .footer-col li:hover {
+            color: var(--accent-light);
+            cursor: pointer;
+        }
+
+        .footer-col a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            nav ul {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h3 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid, .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <h1>Flower Haven</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button">Order Now</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Beautiful Blooms for Every Occasion</h2>
+            <p>Premium flowers delivered to your doorstep with <span class="highlight">same-day delivery</span> and <span class="highlight">affordable prices</span>. Explore our wide variety of fresh flowers and arrangements.</p>
+            <button class="cta-button">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h3>Why Choose Flower Haven?</h3>
+            <p>Our commitment to quality and service sets us apart</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card animate">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h4>Free Delivery</h4>
+                <p>Enjoy free same-day delivery on all orders within the city. We'll get your flowers to you or your loved ones promptly.</p>
+            </div>
+            <div class="feature-card animate">
+                <div class="feature-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h4>Affordable Prices</h4>
+                <p>Premium quality flowers at prices that won't break the bank. We believe everyone deserves beautiful blooms.</p>
+            </div>
+            <div class="feature-card animate">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h4>Fresh & Sustainable</h4>
+                <p>Our flowers are sourced from sustainable farms and arrive fresh daily. We care about quality and the environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h3>Our Flower Collection</h3>
+            <p>Browse our wide selection of fresh flowers and arrangements</p>
+        </div>
+        <div class="products-filter">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Roses</button>
+            <button class="filter-btn">Lilies</button>
+            <button class="filter-btn">Tulips</button>
+            <button class="filter-btn">Orchids</button>
+            <button class="filter-btn">Mixed Bouquets</button>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1546182920-c43ffb481551?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Red Rose Bouquet">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Roses</span>
+                    <h3 class="product-title">Eternal Red Roses</h3>
+                    <p>Premium red roses hand-arranged in a beautiful bouquet with seasonal greenery.</p>
+                    <div class="product-price">
+                        <span class="price">$34.99</span>
+                        <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lily Arrangement">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Lilies</span>
+                    <h3 class="product-title">Tranquil Lilies</h3>
+                    <p>Elegant white lilies arranged with delicate fillers in a modern glass vase.</p>
+                    <div class="product-price">
+                        <span class="price">$39.99</span>
+                        <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tulip Bouquet">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Tulips</span>
+                    <h3 class="product-title">Spring Tulips</h3>
+                    <p>Vibrant multi-colored tulips that capture the essence of springtime.</p>
+                    <div class="product-price">
+                        <span class="price">$29.99</span>
+                        <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1595425970375-6f4f39156680?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Orchid Plant">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Orchids</span>
+                    <h3 class="product-title">Phalaenopsis Orchid</h3>
+                    <p>Potted orchid plant with long-lasting blooms, perfect for home or office decor.</p>
+                    <div class="product-price">
+                        <span class="price">$44.99</span>
+                        <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1543062094-d22540cadf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mixed Bouquet">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Mixed Bouquets</span>
+                    <h3 class="product-title">Garden Delight</h3>
+                    <p>Seasonal mixed bouquet featuring roses, carnations, and wildflowers.</p>
+                    <div class="product-price">
+                        <span class="price">$36.99</span>
+                        <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1511285225529-c2879c8629ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sunflower Arrangement">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Mixed Bouquets</span>
+                    <h3 class="product-title">Sunshine Bouquet</h3>
+                    <p>Bright sunflowers paired with complementary blooms to spread joy.</p>
+                    <div class="product-price">
+                        <span class="price">$32.99</span>
+                        <button class="add-to-cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h3>What Our Customers Say</h3>
+            <p>Don't just take our word for it - hear from our happy customers</p>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonial-slide active">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" class="testimonial-img">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"I ordered flowers for my wife's birthday and they were absolutely stunning! The delivery was right on time and the bouquet looked even better than in the pictures. Will definitely order again!"</p>
+                <h4 class="testimonial-author">Sarah Johnson</h4>
+            </div>
+            <div class="testimonial-slide">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="testimonial-img">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">"Flower Haven saved the day when I forgot our anniversary! I placed an order in the morning and they delivered a beautiful arrangement by afternoon. My wife was thrilled and the prices were very reasonable."</p>
+                <h4 class="testimonial-author">Michael Chen</h4>
+            </div>
+            <div class="testimonial-slide">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="testimonial-img">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"I've been ordering monthly flower subscriptions for my mother, and she loves them every time! The variety is great, and the flowers stay fresh for over a week. Excellent service and beautiful arrangements."</p>
+                <h4 class="testimonial-author">Emily Rodriguez</h4>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="cta-content">
+            <h3>Ready to Brighten Someone's Day?</h3>
+            <p>Order now and experience the Flower Haven difference with fresh, beautiful blooms delivered right to your door.</p>
+            <div class="cta-buttons">
+                <button class="cta-button">Shop All Flowers</button>
+                <button class="secondary-button">Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <h1>Flower Haven</h1>
+                </div>
+                <p>Bringing joy through beautiful flowers since 2010. We're dedicated to providing the freshest blooms and exceptional service for every occasion.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Care Instructions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Bloom Street, Garden City, GC 12345</p>
+                <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@flowerhaven.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Flower Haven. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for flower lovers</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Animate elements when they come into view
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .product-card, .section-title');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Testimonial slider
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            
+            function hideSlides() {
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+            }
+            
+            function showSlide(index) {
+                hideSlides();
+                slides[index].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            const testimonialsContainer = document.querySelector('.testimonials-container');
+            testimonialsContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            testimonialsContainer.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+            
+            showSlide(currentSlide);
+        });
+
+        // Product filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        // Add to cart animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartBtns = document.querySelectorAll('.add-to-cart');
+            
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const floatingPrice = document.createElement('div');
+                    floatingPrice.textContent = '+1';
+                    floatingPrice.style.cssText = `
+                        position: absolute;
+                        color: ${getComputedStyle(document.body).getPropertyValue('--accent')};
+                        font-weight: bold;
+                        pointer-events: none;
+                        z-index: 1000;
+                        transform: translateY(0);
+                    `;
+                    
+                    const btnRect = btn.getBoundingClientRect();
+                    floatingPrice.style.left = (btnRect.left + btnRect.width / 2) + 'px';
+                    floatingPrice.style.top = (btnRect.top - 20) + 'px';
+                    
+                    document.body.appendChild(floatingPrice);
+                    
+                    let start = null;
+                    const duration = 800;
+                    
+                    function animate(timestamp) {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        const percent = Math.min(progress / duration, 1);
+                        
+                        floatingPrice.style.transform = `translateY(${-50 * percent}px)`;
+                        floatingPrice.style.opacity = 1 - percent;
+                        
+                        if (percent < 1) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            document.body.removeChild(floatingPrice);
+                        }
+                    }
+                    
+                    requestAnimationFrame(animate);
+                    
+                    this.innerHTML = '<i class="fas fa-check"></i>';
+                    this.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-plus"></i>';
+                        this.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--accent');
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
